@@ -21,7 +21,8 @@ header {
   }
 }
 
-body {
+.body {
+  display: flex;
   background: #d5efff;
   font-style: normal;
   font-weight: 300;
@@ -38,15 +39,19 @@ body {
   margin: 3%;
 }
 
+.container-for-registration {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
 .registration-conainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
-  width: 460.5px;
-  height: 543px;
-  left: 799.5px;
-  top: 158px;
+  width: 76%;
+  height: 80%;
   background: #ffffff;
   border-radius: 4px;
 
@@ -77,7 +82,7 @@ body {
     }
 
     input {
-      width: 358px;
+      width: 96%;
       height: 40px;
       left: 575px;
       border: 1px solid rgba(0, 0, 0, 0.2);

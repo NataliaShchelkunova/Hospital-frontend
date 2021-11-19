@@ -55,16 +55,16 @@ const RegistrationFormComponent = () => {
     if (regExLogin.test(formLogin)) {
       booleanLoginFunction();
     }
-    if (formPassword === formPasswordRepeat) {
-      checkPasswordFunction();
-    }
     if (regExPassword.test(formPassword)) {
       booleanPasswordFunction();
     }
+    if (formPassword === formPasswordRepeat) {
+      checkPasswordFunction();
+    }
     if (
       regExLogin.test(formLogin) &&
-      formPassword === formPasswordRepeat &&
-      regExPassword.test(formPassword)
+      regExPassword.test(formPassword) &&
+      formPassword === formPasswordRepeat
     ) {
       registrationPage();
     }
@@ -80,26 +80,27 @@ const RegistrationFormComponent = () => {
         <div className="image-conainer">
           <img alt="" src={image} />
         </div>
-        <div className="registration-conainer">
-          <h1>Регистрация </h1>
-
-          <div className="form-container">
-            <form onSubmit={getDataForms}>
-              <label>Login: </label>
-              <input type="text" placeholder="login" name="login" />
-              <label>Password: </label>
-              <input type="password" placeholder="password" name="password" />
-              <label>Repeat Password:</label>
-              <input
-                type="password"
-                placeholder="Password"
-                name="passwordRepeat"
-              />
-              <div className="button-and-text-conainer">
-                <button>Зарегистрироваться</button>
-                <h4>Авторизоваться</h4>
-              </div>
-            </form>
+        <div className="container-for-registration">
+          <div className="registration-conainer">
+            <h1>Регистрация </h1>
+            <div className="form-container">
+              <form onSubmit={getDataForms}>
+                <label>Login: </label>
+                <input type="text" placeholder="login" name="login" />
+                <label>Password: </label>
+                <input type="password" placeholder="password" name="password" />
+                <label>Repeat Password:</label>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="passwordRepeat"
+                />
+                <div className="button-and-text-conainer">
+                  <button>Зарегистрироваться</button>
+                  <h4>Авторизоваться</h4>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
