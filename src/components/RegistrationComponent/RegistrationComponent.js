@@ -22,7 +22,6 @@ const RegistrationFormComponent = () => {
       stateSnackbar: true,
       message: checkLogin,
     });
-    console.log("login");
   };
 
   const booleanPasswordFunction = () => {
@@ -62,7 +61,7 @@ const RegistrationFormComponent = () => {
               password: formPassword,
             })
             .then((res) => {
-              console.log("djdjdjdjdj");
+              registrationPage();
             });
         } else {
           checkPasswordFunction();
