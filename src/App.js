@@ -12,8 +12,7 @@ const App = () => {
           <RegistrationFormComponent />
         </Route>
         <Route path="/autorisation">
-          {" "}
-          <AutorisationFormComponent />{" "}
+          <AutorisationFormComponent />
         </Route>
         <Redirect from="/" to="/registration"></Redirect>
       </Switch>
