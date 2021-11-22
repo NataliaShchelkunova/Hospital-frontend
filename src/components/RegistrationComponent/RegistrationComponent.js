@@ -46,27 +46,31 @@ const RegistrationFormComponent = () => {
     history.push("/autorisation");
   };
 
-  const getDataForms = (e) => {
+  const getDataForms = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const formLogin = formData.get("login").trim();
     const formPassword = formData.get("password");
     const formPasswordRepeat = formData.get("passwordRepeat");
     if (regExLogin.test(formLogin)) {
+      if (regExPassword.test(formPassword)) {
+        if (formPassword === formPasswordRepeat) {
+          await axios
+            .post("http://localhost:9000/registration", {
+              username: formLogin,
+              password: formPassword,
+            })
+            .then((res) => {
+              registrationPage();
+            });
+        } else {
+          checkPasswordFunction();
+        }
+      } else {
+        booleanPasswordFunction();
+      }
+    } else {
       booleanLoginFunction();
-    }
-    if (regExPassword.test(formPassword)) {
-      booleanPasswordFunction();
-    }
-    if (formPassword === formPasswordRepeat) {
-      checkPasswordFunction();
-    }
-    if (
-      regExLogin.test(formLogin) &&
-      regExPassword.test(formPassword) &&
-      formPassword === formPasswordRepeat
-    ) {
-      registrationPage();
     }
   };
 
