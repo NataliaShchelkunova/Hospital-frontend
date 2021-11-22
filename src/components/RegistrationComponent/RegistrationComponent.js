@@ -72,7 +72,7 @@ const RegistrationFormComponent = () => {
                 registrationPage();
               });
           } catch (error) {
-            errorRegistration(error);
+            errorRegistration();
           }
         } else {
           checkPasswordFunction();
