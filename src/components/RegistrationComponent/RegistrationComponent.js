@@ -41,7 +41,7 @@ const RegistrationFormComponent = () => {
   const errorRegistration = () => {
     setOpen({
       stateSnackbar: true,
-      message: "user registration error",
+      message: "user registration error, this login is busy",
     });
   };
 
