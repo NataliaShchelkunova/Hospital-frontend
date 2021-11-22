@@ -38,6 +38,13 @@ const RegistrationFormComponent = () => {
     });
   };
 
+  const errorRegistration = () => {
+    setOpen({
+      stateSnackbar: true,
+      message: "user registration error",
+    });
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -55,14 +62,18 @@ const RegistrationFormComponent = () => {
     if (regExLogin.test(formLogin)) {
       if (regExPassword.test(formPassword)) {
         if (formPassword === formPasswordRepeat) {
-          await axios
-            .post("http://localhost:9000/registration", {
-              username: formLogin,
-              password: formPassword,
-            })
-            .then((res) => {
-              registrationPage();
-            });
+          try {
+            await axios
+              .post("http://localhost:9000/registration", {
+                username: formLogin,
+                password: formPassword,
+              })
+              .then((res) => {
+                registrationPage();
+              });
+          } catch (error) {
+            errorRegistration();
+          }
         } else {
           checkPasswordFunction();
         }
