@@ -3,6 +3,8 @@ header {
   align-items: center;
   width: 100%;
   height: 117px;
+  left: 0px;
+  top: 0px;
   background: #c5e9ff;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -21,8 +23,7 @@ header {
   }
 }
 
-.body {
-  display: flex;
+body {
   background: #d5efff;
   font-style: normal;
   font-weight: 300;
@@ -39,14 +40,14 @@ header {
   margin: 3%;
 }
 
-.container-for-registration {
+.container-for-autorisation {
   display: flex;
   width: 50%;
   align-items: center;
   justify-content: center;
 }
 
-.registration-conainer {
+.autorisation-conainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
