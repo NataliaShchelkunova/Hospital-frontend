@@ -7,7 +7,7 @@ import image from "../../icons/image.svg";
 import "./autorisationComponent.scss";
 
 const AutorisationFormComponent = () => {
-  let history = useHistory();
+  const history = useHistory();
   const regExLogin = /(\w+).{6}/;
   const regExPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{1,}$/;
   const [open, setOpen] = useState({ stateSnackbar: false, message: "" });
@@ -47,7 +47,7 @@ const AutorisationFormComponent = () => {
 
   const getDataForms = async (e) => {
     e.preventDefault();
-    let formData = new FormData(e.target);
+    const formData = new FormData(e.target);
     const formLogin = formData.get("Login").trim();
     const formPassword = formData.get("password");
 
