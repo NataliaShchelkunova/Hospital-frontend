@@ -1,0 +1,25 @@
+.all-reception-container {
+  width: 96%;
+  margin: auto;
+
+  .css-15wwp11-MuiTableHead-root {
+    background-color: #c4c4c4;
+  }
+
+  .css-1ex1afd-MuiTableCell-root,
+  .css-1yhpg23-MuiTableCell-root,
+  .css-1ex1afd-MuiTableCell-root,
+  .css-34nofg-MuiTableRow-root:last-child td,
+  .css-34nofg-MuiTableRow-root:last-child th {
+    border-left: 2px solid black;
+  }
+
+  .css-1ex1afd-MuiTableCell-root,
+  .css-1yhpg23-MuiTableCell-root {
+    border-bottom: none;
+  }
+
+  .edit-table {
+    border-left: none;
+  }
+}
