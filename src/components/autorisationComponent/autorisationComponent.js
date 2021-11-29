@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
 import logo from "../../icons/Vector.svg";
@@ -60,6 +60,7 @@ const AutorisationFormComponent = () => {
               password: formPassword,
             })
             .then((res) => {
+              localStorage.setItem("token", res.data.token);
               mainPage();
             });
         } catch (error) {
@@ -94,7 +95,9 @@ const AutorisationFormComponent = () => {
                 <input type="password" placeholder="Password" name="password" />
                 <div className="button-and-text-conainer">
                   <button>Войти</button>
-                  <h4>Зарегистрироваться</h4>
+                  <Link to="/registration" className="link-text">
+                    Зарегистрироваться
+                  </Link>
                 </div>
               </form>
             </div>

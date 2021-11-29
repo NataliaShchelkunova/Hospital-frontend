@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import Snackbar from "@material-ui/core/Snackbar";
 import logo from "../../icons/Vector.svg";
@@ -50,7 +50,7 @@ const RegistrationFormComponent = () => {
   };
 
   const registrationPage = () => {
-    history.push("/autorisation");
+    history.push("/main");
   };
 
   const getDataForms = async (e) => {
@@ -69,6 +69,7 @@ const RegistrationFormComponent = () => {
                 password: formPassword,
               })
               .then((res) => {
+                localStorage.setItem("token", res.data.token);
                 registrationPage();
               });
           } catch (error) {
@@ -112,7 +113,9 @@ const RegistrationFormComponent = () => {
                 />
                 <div className="button-and-text-conainer">
                   <button>Зарегистрироваться</button>
-                  <h4>Авторизоваться</h4>
+                  <Link to="/autorisation" className="link-text">
+                    Авторизоваться
+                  </Link>
                 </div>
               </form>
             </div>

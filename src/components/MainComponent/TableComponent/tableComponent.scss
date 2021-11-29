@@ -2,24 +2,34 @@
   width: 96%;
   margin: auto;
 
-  .css-15wwp11-MuiTableHead-root {
+  .table-head {
     background-color: #c4c4c4;
   }
 
-  .css-1ex1afd-MuiTableCell-root,
-  .css-1yhpg23-MuiTableCell-root,
-  .css-1ex1afd-MuiTableCell-root,
-  .css-34nofg-MuiTableRow-root:last-child td,
-  .css-34nofg-MuiTableRow-root:last-child th {
+  .table-row {
     border-left: 2px solid black;
-  }
-
-  .css-1ex1afd-MuiTableCell-root,
-  .css-1yhpg23-MuiTableCell-root {
     border-bottom: none;
   }
 
   .edit-table {
     border-left: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .table-head tr th {
+    font-size: 3rem;
+  }
+
+  .table-row tr th {
+    font-size: 1.5rem;
+  }
+  
+  .table-row tr td {
+    font-size: 1.5rem;
+  }
+
+  .image-for-table {
+    width: 30px;
   }
 }

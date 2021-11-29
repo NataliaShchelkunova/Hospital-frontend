@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import logo from "../../icons/Vector.svg";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import TextField from "@mui/material/TextField";
-import FormControl from "@mui/material/FormControl";
+import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
+import { Select, MenuItem, TextField, FormControl } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import TableComponent from "./TableComponent/TableComponent";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import logo from "../../icons/Vector.svg";
 import "./MainComponent.scss";
 
 const MainComponent = () => {
   const [receptions, setReceptions] = useState([]);
+  const history = useHistory();
+
+  const validateForToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/registration");
+    }
+  };
+
+  validateForToken();
 
   const [data, setData] = useState({
     namePatient: "",
     doctorName: "",
     newDate: moment(new Date()).format("DD.MM.YYYY"),
+    complaints: "",
   });
 
   const doctorNames = [
@@ -43,28 +51,45 @@ const MainComponent = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:9000/getAllReception").then((res) => {
-      setReceptions(res.data.data);
-    });
-  }, []);
+    axios
+      .get("http://localhost:9000/getAllReception", {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setReceptions(res.data.data);
+      });
+  }, [setReceptions]);
 
-  const addNewReception = async (req, res) => {
+  const addNewReception = async () => {
     data.newDate = moment(data.newDate).format("DD.MM.YYYY");
+
     try {
       await axios
-        .post("http://localhost:9000/createNewReception", data)
+        .post("http://localhost:9000/createNewReception", data, {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        })
         .then((res) => {
           receptions.push(res.data.data);
           setReceptions([...receptions]);
           setData({
             namePatient: "",
-            newDate: moment(new Date()).format("DD/MM/YYYY"),
+            doctorName: "",
+            newDate: new Date(),
             complaints: "",
           });
         });
     } catch (error) {
-      res.status(404).send("Error");
+      return error;
     }
+  };
+
+  const mainPage = () => {
+    localStorage.clear();
+    history.push("/registration");
   };
 
   return (
@@ -73,14 +98,15 @@ const MainComponent = () => {
         <header>
           <img alt="" src={logo} />
           <h1 className="header-text">Приёмы </h1>
-          <button>Выход</button>
+          <button onClick={() => mainPage()}>Выход</button>
         </header>
       </div>
       <div className="text-and-input-container">
         <div className="input-container">
           <div className="text-input-patient-name-container">
-            <div className="name-patient">Имя:</div>
+            <div className="text">Имя:</div>
             <TextField
+              className="name-patient"
               required
               value={namePatient || ""}
               id="outlined-required"
@@ -90,15 +116,20 @@ const MainComponent = () => {
           </div>
 
           <div className="text-input-doctor-container">
-            <div className="name-doctor">Врач:</div>
-            <FormControl>
+            <div className="text">Врач:</div>
+            <FormControl className="name-doctor">
               <Select
+                className="name-doctor"
                 value={doctorName || ""}
                 name="doctorName"
                 onChange={(e) => handleChange(e.target.name, e.target.value)}
               >
                 {doctorNames.map((item, index) => (
-                  <MenuItem key={`item-${index}`} value={item.value}>
+                  <MenuItem
+                    key={`item-${index}`}
+                    value={item.value}
+                    className="test"
+                  >
                     {item.value}
                   </MenuItem>
                 ))}
@@ -106,22 +137,29 @@ const MainComponent = () => {
             </FormControl>
           </div>
           <div className="text-input-date-container">
-            <div className="date-input">Дата:</div>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <div className="text">Дата:</div>
+            <LocalizationProvider
+              className="date-input"
+              dateAdapter={AdapterDateFns}
+            >
               <DesktopDatePicker
+                className="date-input"
                 inputFormat={"dd/MM/yyyy"}
                 name="date"
                 value={newDate || new Date()}
                 onChange={(e) => handleChange("newDate", e)}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params) => (
+                  <TextField className="date-file" {...params} />
+                )}
               />
             </LocalizationProvider>
           </div>
 
           <div className="text-input-complaints-container">
-            <div className="complaints-input">Жалобы:</div>
+            <div className="text">Жалобы:</div>
             <div className="one-line-button-and-input">
               <TextField
+                className="one-complaints-input"
                 required
                 value={complaints || ""}
                 id="outlined-required"
@@ -130,9 +168,7 @@ const MainComponent = () => {
               />
               <button
                 disabled={
-                  namePatient && newDate && complaints && doctorNames
-                    ? false
-                    : true
+                  !(namePatient && newDate && complaints && doctorNames)
                 }
                 className="add-information"
                 onClick={() => {

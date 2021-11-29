@@ -2,7 +2,7 @@ header {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 117px;
+  min-height: 117px;
   background: #c5e9ff;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -11,7 +11,7 @@ header {
     height: 55px;
     font-style: normal;
     font-weight: 300;
-    font-size: 58px;
+    font-size: 4rem;
     line-height: 42px;
     text-align: center;
   }
@@ -119,6 +119,165 @@ header {
         font-weight: 300;
         font-size: 18px;
         line-height: 21px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 2rem;
+
+    .image-conainer {
+      width: 37%;
+
+      img {
+        width: 130px;
+      }
+    }
+
+    .container-for-registration {
+      width: 63%;
+
+      .registration-conainer {
+        font-size: 2rem;
+        height: 650px;
+        width: 95%;
+        margin: 3%;
+
+        .form-container {
+          label {
+            font-size: 1.9rem;
+          }
+
+          input {
+            font-size: 2rem;
+            min-height: 61px;
+          }
+
+          .button-and-text-conainer {
+            button {
+              width: 73%;
+              font-size: 2rem;
+              margin: 3%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  body {
+    font-size: 2rem;
+
+    .image-conainer {
+      width: 37%;
+
+      img {
+        width: 130px;
+      }
+    }
+
+    .container-for-registration {
+      width: 63%;
+
+      .registration-conainer {
+        font-size: 2rem;
+        height: 650px;
+        width: 95%;
+        margin: 3%;
+
+        .form-container {
+          label {
+            font-size: 1.9rem;
+          }
+
+          input {
+            font-size: 2rem;
+            min-height: 61px;
+          }
+
+          .button-and-text-conainer {
+            button {
+              width: 94%;
+              font-size: 2rem;
+              margin: 3%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  header {
+    .header-text {
+      font-size: 2rem;
+      height: 77px;
+    }
+  }
+
+  body {
+    .image-conainer {
+      width: 1%;
+      img {
+        width: 1px;
+      }
+    }
+    .container-for-registration {
+      width: 99%;
+      .registration-conainer {
+        width: 100%;
+        .form-container {
+          .button-and-text-conainer {
+            button {
+              width: 100%;
+              font-size: 1.7rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  header {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .header-text {
+      font-size: 2rem;
+    }
+  }
+  header {
+    .header-text {
+      font-size: 2rem;
+      height: 77px;
+    }
+  }
+  body {
+    .image-conainer {
+      width: 1%;
+      img {
+        width: 1px;
+      }
+    }
+    .container-for-registration {
+      width: 99%;
+      .registration-conainer {
+        width: 100%;
+        .form-container {
+          .button-and-text-conainer {
+            button {
+              width: 100%;
+              font-size: 1.5rem;
+            }
+          }
+        }
       }
     }
   }
