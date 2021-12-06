@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TableBody,
   TableRow,
@@ -8,16 +8,41 @@ import {
   Table,
   Paper,
 } from "@mui/material";
+import EditComponent from "../../EditComponent/EditComponent";
+import DeleteComponent from "../../DeleteComponent/DeleteComponent";
 import editImage from "../../../icons/edit.svg";
 import deleteImage from "../../../icons/delete.svg";
 import "./tableComponent.scss";
 
-const TableComponent = ({ receptions }) => {
+const TableComponent = ({ receptions, setReceptions }) => {
   const headTable = ["Имя", "Врач", "Дата", "Жалобы"];
+  const [openModalWindows, setOpenModalWindows] = useState({
+    stateModalWindowDelete: false,
+    stateModalWindowEdit: false,
+  });
 
-  const editFunction = (index) => {};
+  const [visitation, setVisitation] = useState(-1);
 
-  const deleteFunction = (index) => {};
+  const deleteFunction = (index) => {
+    setOpenModalWindows({
+      ...openModalWindows, stateModalWindowDelete: true
+    });
+    setVisitation(index);
+  };
+
+  const editFunction = (index) => {
+    setOpenModalWindows({
+     ...openModalWindows, stateModalWindowEdit: true
+    });
+    setVisitation(index);
+  };
+
+  const closeModalWindows = () => {
+    setOpenModalWindows(false);
+    setVisitation(-1);
+  };
+
+  const { stateModalWindowDelete, stateModalWindowEdit } = openModalWindows;
 
   return (
     <div className="all-reception-container">
@@ -75,6 +100,21 @@ const TableComponent = ({ receptions }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      {stateModalWindowDelete && (
+        <DeleteComponent
+          stateModalWindowDelete={stateModalWindowDelete}
+          idTask={receptions[visitation]._id}
+          closeModalWindows={closeModalWindows}
+          setReceptions={setReceptions}
+        />
+      )}
+      {stateModalWindowEdit && (
+        <EditComponent
+          oneTask={receptions[visitation]}
+          closeModalWindows={closeModalWindows}
+          setReceptions={setReceptions}
+        />
+      )}
     </div>
   );
 };

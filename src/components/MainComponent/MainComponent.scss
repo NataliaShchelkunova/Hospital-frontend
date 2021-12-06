@@ -34,6 +34,10 @@ header {
   }
 }
 
+.table-container {
+  max-height: 65vh;
+}
+
 .text-and-input-container {
   display: flex;
   background: #c5e9ff;
@@ -108,12 +112,9 @@ header {
     .one-complaints-input,
     .name-patient,
     .name-doctor {
-      box-shadow: none;
       background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      box-sizing: border-box;
+      height: 100%;
       border-radius: 4px;
-      min-height: 57px;
     }
 
     .one-line-button-and-input {
@@ -152,7 +153,7 @@ header {
 
       .text-input-patient-name-container {
         width: 100%;
-        margin: 4% 0;
+        margin: 1% 0;
         text-align: center;
 
         .name-patient {
@@ -167,13 +168,13 @@ header {
 
       .text-input-doctor-container {
         width: 100%;
-        margin: 4% 0;
+        margin: 1% 0;
         text-align: center;
       }
 
       .text-input-date-container {
         width: 100%;
-        margin: 4% 0;
+        margin: 1% 0;
         text-align: center;
 
         .date-file {
@@ -192,7 +193,7 @@ header {
         display: flex;
         flex-direction: column;
         width: 100%;
-        margin: 4% 0;
+        margin: 1% 0;
       }
 
       .text-input-complaints-container {
@@ -225,9 +226,10 @@ header {
 
 @media (max-width: 540px) {
   header {
-    .header-text{
+    .header-text {
       font-size: 2rem;
     }
+    
     button {
       font-size: 1rem;
       width: 25%;
@@ -235,4 +237,3 @@ header {
     }
   }
 }
-

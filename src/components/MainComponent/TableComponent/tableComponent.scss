@@ -1,6 +1,8 @@
 .all-reception-container {
   width: 96%;
   margin: auto;
+  overflow: auto;
+  max-height: 65vh;
 
   .table-head {
     background-color: #c4c4c4;
@@ -24,7 +26,7 @@
   .table-row tr th {
     font-size: 1.5rem;
   }
-  
+
   .table-row tr td {
     font-size: 1.5rem;
   }
