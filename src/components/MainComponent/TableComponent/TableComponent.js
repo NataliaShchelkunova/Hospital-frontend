@@ -21,22 +21,18 @@ const TableComponent = ({ receptions, setReceptions }) => {
     stateModalWindowEdit: false,
   });
 
-  // const [openEditModalWindows, setOpenEditModalWindows] = useState({
-  //   stateModalWindow: false,
-  // });
-
   const [visitation, setVisitation] = useState(-1);
 
   const deleteFunction = (index) => {
     setOpenModalWindows({
-      stateModalWindowDelete: true,
+      ...openModalWindows, stateModalWindowDelete: true
     });
     setVisitation(index);
   };
 
   const editFunction = (index) => {
     setOpenModalWindows({
-      stateModalWindowEdit: true,
+     ...openModalWindows, stateModalWindowEdit: true
     });
     setVisitation(index);
   };
@@ -114,7 +110,6 @@ const TableComponent = ({ receptions, setReceptions }) => {
       )}
       {stateModalWindowEdit && (
         <EditComponent
-          // stateModalWindowEdit={stateModalWindowEdit}
           oneTask={receptions[visitation]}
           closeModalWindows={closeModalWindows}
           setReceptions={setReceptions}
