@@ -25,7 +25,7 @@ const MainComponent = () => {
   const [data, setData] = useState({
     namePatient: "",
     doctorName: "",
-    newDate: moment(new Date()).format("DD.MM.YYYY"),
+    newDate: new Date(),
     complaints: "",
   });
 
@@ -181,8 +181,8 @@ const MainComponent = () => {
           </div>
         </div>
       </div>
-      <div>
-        <TableComponent receptions={receptions} />
+      <div className="table-container">
+        <TableComponent receptions={receptions} setReceptions={setReceptions} data={data} setData={setData} />
       </div>
     </div>
   );
