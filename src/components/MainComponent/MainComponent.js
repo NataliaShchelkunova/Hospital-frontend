@@ -182,7 +182,12 @@ const MainComponent = () => {
         </div>
       </div>
       <div className="table-container">
-        <TableComponent receptions={receptions} setReceptions={setReceptions} data={data} setData={setData} />
+        <TableComponent
+          receptions={receptions}
+          setReceptions={setReceptions}
+          data={data}
+          setData={setData}
+        />
       </div>
     </div>
   );
