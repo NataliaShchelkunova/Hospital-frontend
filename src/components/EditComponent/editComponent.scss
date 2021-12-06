@@ -1,7 +1,10 @@
 .modal-window {
-  margin: 9%;
-  height: 70%;
+  margin: 10% 20%;
+  width: 60%;
+  background-color: white;
+  padding: 0;
 }
+
 .button-container-modal-window {
   display: flex;
   justify-content: flex-end;
@@ -9,7 +12,6 @@
   margin-top: 5%;
   width: 100%;
   background: #ffffff;
-
   box-shadow: 4px 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 89px;
 
@@ -85,5 +87,12 @@
     .text-input-complaints-container {
       margin-top: 2%;
     }
+  }
+}
+
+@media (max-width: 540px) {
+  .modal-window {
+    margin: 5% auto;
+    width: 90%;
   }
 }

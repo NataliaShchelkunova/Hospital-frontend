@@ -45,7 +45,6 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
   } = data;
 
   const handleChange = (inputName, value) => {
-    console.log(inputName, value);
     setData({
       ...data,
       [inputName]: value,
@@ -79,23 +78,14 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
       });
   };
 
-  const style = {
-    margin: "10% 20%",
-    width: "60%",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 4,
-    padding: 0,
-  };
-
   return (
-    <div className="modal-window">
+    <div>
       <Modal
         open={true}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className="modal-window">
           <div className="modal-window-head">
             <Typography
               className="head-modal-window"
