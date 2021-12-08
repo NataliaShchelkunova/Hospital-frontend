@@ -5,6 +5,7 @@ import moment from "moment";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
 import { Select, MenuItem, TextField, FormControl } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import SortAppointmentsComponent from "../SortComponent/SortComponent";
 import TableComponent from "./TableComponent/TableComponent";
 import logo from "../../icons/Vector.svg";
 import "./MainComponent.scss";
@@ -180,6 +181,12 @@ const MainComponent = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="main-div-for-sort-component" >
+        <SortAppointmentsComponent
+          receptions={receptions}
+          setReceptions={setReceptions}
+        />
       </div>
       <div className="table-container">
         <TableComponent
