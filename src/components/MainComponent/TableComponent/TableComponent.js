@@ -25,14 +25,16 @@ const TableComponent = ({ receptions, setReceptions }) => {
 
   const deleteFunction = (index) => {
     setOpenModalWindows({
-      ...openModalWindows, stateModalWindowDelete: true
+      ...openModalWindows,
+      stateModalWindowDelete: true,
     });
     setVisitation(index);
   };
 
   const editFunction = (index) => {
     setOpenModalWindows({
-     ...openModalWindows, stateModalWindowEdit: true
+      ...openModalWindows,
+      stateModalWindowEdit: true,
     });
     setVisitation(index);
   };

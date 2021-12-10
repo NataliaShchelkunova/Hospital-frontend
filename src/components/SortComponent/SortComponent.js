@@ -40,11 +40,6 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
 
   const { field, direction } = sortParams;
   const sortCollection = (sortBySetData, sortDirection) => {
-    console.log(
-      sortBySetData,
-      sortDirection,
-      receptions[0].newDate < receptions[2].newDate
-    );
     receptions.sort((a, b) =>
       a[sortBySetData] > b[sortBySetData]
         ? 1

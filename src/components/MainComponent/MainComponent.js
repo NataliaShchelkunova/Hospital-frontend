@@ -67,11 +67,6 @@ const MainComponent = () => {
   }, [setReceptions]);
 
   const addNewReception = async () => {
-    console.log("data.newDate", data.newDate);
-    const a = moment(data.newDate).format("DD.MM.YYYY");
-    console.log("data.newDatedd", a);
-    console.log("a", new Date(a));
-    console.log("a", new Date(a).getMonth());
     data.newDate = moment(data.newDate).format("DD.MM.YYYY");
 
     try {
