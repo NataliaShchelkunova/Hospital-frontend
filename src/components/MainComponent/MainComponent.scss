@@ -35,7 +35,7 @@ header {
 }
 
 .table-container {
-  max-height: 65vh;
+  height: 49vh;
 }
 
 .text-and-input-container {
@@ -135,6 +135,29 @@ header {
   }
 }
 
+.main-div-for-sort-component {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 98%;
+  margin: 2% auto;
+}
+
+.filter-state {
+  width: 24%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.main-div-for-filter-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 98%;
+  margin: 2% auto;
+}
+
 @media (max-width: 1024px) {
   .text-and-input-container {
     min-height: 14vh;
@@ -229,7 +252,7 @@ header {
     .header-text {
       font-size: 2rem;
     }
-    
+
     button {
       font-size: 1rem;
       width: 25%;

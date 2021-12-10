@@ -39,8 +39,12 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
   ];
 
   const { field, direction } = sortParams;
-
   const sortCollection = (sortBySetData, sortDirection) => {
+    console.log(
+      sortBySetData,
+      sortDirection,
+      receptions[0].newDate < receptions[2].newDate
+    );
     receptions.sort((a, b) =>
       a[sortBySetData] > b[sortBySetData]
         ? 1
@@ -65,7 +69,7 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
   return (
     <div className="sort-style">
       <div className="sort-component">
-      <p>Cортировать по:</p>
+        <p>Cортировать по:</p>
 
         <Select
           labelId="demo-simple-select-label"
@@ -83,9 +87,8 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
         </Select>
       </div>
       {field && field !== "_id" && (
-        
         <div className="sort-component-type">
-        <p>Направление:</p>
+          <p>Направление:</p>
 
           <Select
             labelId="demo-simple-select-label"
