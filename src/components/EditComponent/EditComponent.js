@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
@@ -16,6 +17,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import "./editComponent.scss";
 
 const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
+  const history = useHistory();
   const { _id, namePatient, doctorName, newDate, complaints } = oneTask;
 
   const [data, setData] = useState({
@@ -77,6 +79,15 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
         setReceptions(res.data.data);
       });
   };
+
+  const validateForToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/registration");
+    }
+  };
+
+  validateForToken();
 
   return (
     <div>

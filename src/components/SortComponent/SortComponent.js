@@ -39,7 +39,28 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
   ];
 
   const { field, direction } = sortParams;
+
+  const reverseDate = () => {
+    receptions.map((item) => {
+      const temp = item.newDate.split(".");
+      [temp[0], temp[1]] = [temp[1], temp[0]];
+      const elem = temp.reverse().join(".");
+      item.newDate = elem;
+    });
+  };
+
+  const reverseDateBack = () => {
+    receptions.map((item) => {
+      const temp = item.newDate.split(".");
+      [temp[1], temp[2]] = [temp[2], temp[1]];
+      const elem = temp.reverse().join(".");
+      item.newDate = elem;
+    });
+  };
+
   const sortCollection = (sortBySetData, sortDirection) => {
+    if (sortBySetData === "newDate") reverseDate();
+
     receptions.sort((a, b) =>
       a[sortBySetData] > b[sortBySetData]
         ? 1
@@ -47,7 +68,11 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
         ? -1
         : 0
     );
+
+    if (sortBySetData === "newDate") reverseDateBack();
+
     if (sortDirection === "desc") receptions.reverse();
+
     setReceptions([...receptions]);
   };
 
