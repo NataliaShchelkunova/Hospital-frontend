@@ -1,13 +1,19 @@
 .main-div-for-sort-component {
-  margin: 2% 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 98%;
+  margin: 2% auto;
 }
 
 .sort-style {
   display: flex;
-  align-items: flex-end;
+  margin: auto;
+  align-items: center;
   justify-content: flex-end;
-  width: 99%;
-  
+  width: 64%;
+
   .sort-component,
   .sort-component-type {
     display: flex;

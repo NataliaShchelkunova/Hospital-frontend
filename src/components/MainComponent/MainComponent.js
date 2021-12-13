@@ -5,13 +5,16 @@ import moment from "moment";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/lab";
 import { Select, MenuItem, TextField, FormControl } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import SortAppointmentsComponent from "../SortComponent/SortComponent";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import TableComponent from "./TableComponent/TableComponent";
+import FilterComponent from "../filterComponent/FilterComponent";
+import SortAppointmentsComponent from "../SortComponent/SortComponent";
 import logo from "../../icons/Vector.svg";
 import "./MainComponent.scss";
 
 const MainComponent = () => {
   const [receptions, setReceptions] = useState([]);
+  const [openFilter, setOpenFilter] = useState(0);
   const history = useHistory();
 
   const validateForToken = () => {
@@ -91,6 +94,10 @@ const MainComponent = () => {
   const mainPage = () => {
     localStorage.clear();
     history.push("/registration");
+  };
+
+  const openFilterFunc = () => {
+    setOpenFilter(1);
   };
 
   return (
@@ -182,12 +189,30 @@ const MainComponent = () => {
           </div>
         </div>
       </div>
-      <div className="main-div-for-sort-component" >
+      <div className="main-div-for-sort-component">
         <SortAppointmentsComponent
           receptions={receptions}
           setReceptions={setReceptions}
         />
+        {!openFilter ? (
+          <div className="filter-state">
+            Добавить фильтр по дате:
+            <AddCircleOutlineIcon
+              className="size-icon"
+              onClick={() => openFilterFunc()}
+            />
+          </div>
+        ) : (
+          <div className="main-div-for-filter-component">
+            <FilterComponent
+              receptions={receptions}
+              setReceptions={setReceptions}
+              setOpenFilter={setOpenFilter}
+            />
+          </div>
+        )}
       </div>
+
       <div className="table-container">
         <TableComponent
           receptions={receptions}

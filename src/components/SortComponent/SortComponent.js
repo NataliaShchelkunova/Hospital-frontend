@@ -40,7 +40,27 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
 
   const { field, direction } = sortParams;
 
+  const reverseDate = () => {
+    receptions.map((item) => {
+      const temp = item.newDate.split(".");
+      [temp[0], temp[1]] = [temp[1], temp[0]];
+      const elem = temp.reverse().join(".");
+      item.newDate = elem;
+    });
+  };
+
+  const reverseDateBack = () => {
+    receptions.map((item) => {
+      const temp = item.newDate.split(".");
+      [temp[1], temp[2]] = [temp[2], temp[1]];
+      const elem = temp.reverse().join(".");
+      item.newDate = elem;
+    });
+  };
+
   const sortCollection = (sortBySetData, sortDirection) => {
+    if (sortBySetData === "newDate") reverseDate();
+
     receptions.sort((a, b) =>
       a[sortBySetData] > b[sortBySetData]
         ? 1
@@ -48,7 +68,11 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
         ? -1
         : 0
     );
+
+    if (sortBySetData === "newDate") reverseDateBack();
+
     if (sortDirection === "desc") receptions.reverse();
+
     setReceptions([...receptions]);
   };
 
@@ -65,7 +89,7 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
   return (
     <div className="sort-style">
       <div className="sort-component">
-      <p>Cортировать по:</p>
+        <p>Cортировать по:</p>
 
         <Select
           labelId="demo-simple-select-label"
@@ -83,9 +107,8 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
         </Select>
       </div>
       {field && field !== "_id" && (
-        
         <div className="sort-component-type">
-        <p>Направление:</p>
+          <p>Направление:</p>
 
           <Select
             labelId="demo-simple-select-label"

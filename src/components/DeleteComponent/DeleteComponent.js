@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { Box, Button, Typography, Modal } from "@mui/material";
 import "./deleteComponent.scss";
 
@@ -9,6 +10,8 @@ const DeleteComponent = ({
   closeModalWindows,
   setReceptions,
 }) => {
+  const history = useHistory();
+
   const deleteFunction = async () => {
     await axios
       .delete(`http://localhost:9000/deleteOneReception?_id=${idTask}`, {
@@ -21,6 +24,15 @@ const DeleteComponent = ({
         setReceptions(res.data.data);
       });
   };
+
+  const validateForToken = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/registration");
+    }
+  };
+
+  validateForToken();
 
   return (
     <div>
