@@ -60,7 +60,6 @@ const RegistrationFormComponent = () => {
     const formLogin = formData.get("login").trim();
     const formPassword = formData.get("password");
     const formPasswordRepeat = formData.get("passwordRepeat");
-    console.log(formLogin, formPassword);
 
     if (regExLogin.test(formLogin)) {
       if (regExPassword.test(formPassword)) {
