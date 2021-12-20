@@ -2,7 +2,7 @@ header {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 117px;
+  height: auto;
   left: 0px;
   top: 0px;
   background: #c5e9ff;
@@ -10,11 +10,9 @@ header {
 
   .header-text {
     width: 85%;
-    height: 55px;
     font-style: normal;
     font-weight: 300;
-    font-size: 58px;
-    line-height: 42px;
+    font-size: 2rem;
     text-align: center;
   }
 
@@ -36,8 +34,6 @@ body {
   align-items: center;
   justify-content: center;
   width: 50%;
-  min-height: 583px;
-  margin: 3%;
 }
 
 .container-for-autorisation {
@@ -58,7 +54,7 @@ body {
 
   h1 {
     font-weight: 300;
-    font-size: 43px;
+    font-size: 2rem;
     line-height: 42px;
     color: #000000;
     text-align: center;
@@ -69,7 +65,7 @@ body {
     flex-direction: column;
     justify-content: center;
     width: 80%;
-    margin: auto;
+    margin: 2% auto;
 
     label {
       width: 50%;
@@ -90,14 +86,14 @@ body {
       border-radius: 6px;
       box-sizing: border-box;
       font-weight: 300;
-      font-size: 27px;
+      font-size: 1rem;
       margin: 20px 0;
     }
 
     .button-and-text-conainer {
       display: flex;
       flex-direction: column;
-      margin-top: auto;
+      margin: 3% 0;
       align-items: flex-end;
       margin-right: 9px;
 
@@ -144,7 +140,7 @@ body {
         font-size: 2rem;
         height: 650px;
         width: 95%;
-        margin: 3%;
+        margin: 3% 0;
 
         .form-container {
           label {
@@ -160,7 +156,7 @@ body {
             button {
               width: 73%;
               font-size: 2rem;
-              margin: 3%;
+              margin: 3% 0;
             }
           }
         }
@@ -171,7 +167,7 @@ body {
 
 @media (max-width: 770px) {
   body {
-    font-size: 2rem;
+    font-size: 1.6rem;
 
     .image-conainer {
       width: 37%;
@@ -186,9 +182,9 @@ body {
 
       .autorisation-conainer {
         font-size: 2rem;
-        height: 650px;
+        height: auto;
         width: 95%;
-        margin: 3%;
+        margin: 3% 0;
 
         .form-container {
           label {
@@ -204,7 +200,7 @@ body {
             button {
               width: 94%;
               font-size: 2rem;
-              margin: 3%;
+              margin: 3% 0;
             }
           }
         }
@@ -215,9 +211,9 @@ body {
 
 @media (max-width: 540px) {
   header {
+    img,
     .header-text {
-      font-size: 2rem;
-      height: 77px;
+      display: none;
     }
   }
 
@@ -237,6 +233,9 @@ body {
         width: 100%;
 
         .form-container {
+          input {
+            font-size: 1.5rem;
+          }
           .button-and-text-conainer {
             button {
               width: 100%;
@@ -251,20 +250,23 @@ body {
 
 @media (max-width: 375px) {
   header {
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 
     .header-text {
-      font-size: 2rem;
+      display: none;
     }
   }
 
-  header {
-    .header-text {
-      font-size: 2rem;
-      height: 77px;
-    }
+  header img {
+    display: none;
+  }
+  .header-text {
+    width: auto;
+  }
+
+  header button {
+    margin-left: 32%;
   }
 
   body {
@@ -282,6 +284,7 @@ body {
       .autorisation-conainer {
         font-size: 1.5rem;
         width: 100%;
+        height: auto;
 
         .form-container {
           .button-and-text-conainer {

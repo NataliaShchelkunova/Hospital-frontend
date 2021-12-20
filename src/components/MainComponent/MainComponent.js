@@ -14,13 +14,14 @@ import "./MainComponent.scss";
 
 const MainComponent = () => {
   const [receptions, setReceptions] = useState([]);
+  const [dataFilter, setDataFilter] = useState([]);
   const [openFilter, setOpenFilter] = useState(0);
   const history = useHistory();
 
   const validateForToken = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      history.push("/registration");
+      history.push("/autorisation");
     }
   };
 
@@ -35,13 +36,13 @@ const MainComponent = () => {
 
   const doctorNames = [
     {
-      value: "Ricova Irina Ivanovna",
+      value: "Бейдин Артем",
     },
     {
-      value: "Ten Alexandr Dmitrievich",
+      value: "Ракитина Екатерина",
     },
     {
-      value: "Shunko Eva Andrevna",
+      value: "Марченко Андрей",
     },
   ];
 
@@ -63,6 +64,7 @@ const MainComponent = () => {
       })
       .then((res) => {
         setReceptions(res.data.data);
+        setDataFilter([...res.data.data]);
       });
   }, [setReceptions]);
 
@@ -93,7 +95,7 @@ const MainComponent = () => {
 
   const mainPage = () => {
     localStorage.clear();
-    history.push("/registration");
+    history.push("/autorisation");
   };
 
   const openFilterFunc = () => {
@@ -153,6 +155,8 @@ const MainComponent = () => {
               <DesktopDatePicker
                 className="date-input"
                 inputFormat={"dd/MM/yyyy"}
+                minDate={new Date("01-01-2021")}
+                maxDate={new Date("12-31-2022")}
                 name="date"
                 value={newDate || new Date()}
                 onChange={(e) => handleChange("newDate", e)}
@@ -205,7 +209,7 @@ const MainComponent = () => {
         ) : (
           <div className="main-div-for-filter-component">
             <FilterComponent
-              receptions={receptions}
+              dataFilter={dataFilter}
               setReceptions={setReceptions}
               setOpenFilter={setOpenFilter}
             />

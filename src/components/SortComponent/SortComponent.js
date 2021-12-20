@@ -106,10 +106,10 @@ const SortAppointmentsComponent = ({ receptions, setReceptions }) => {
           ))}
         </Select>
       </div>
+
       {field && field !== "_id" && (
         <div className="sort-component-type">
           <p>Направление:</p>
-
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"

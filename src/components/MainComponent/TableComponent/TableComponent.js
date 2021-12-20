@@ -48,7 +48,7 @@ const TableComponent = ({ receptions, setReceptions }) => {
 
   return (
     <div className="all-reception-container">
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead className="table-head">
             <TableRow>
@@ -98,7 +98,7 @@ const TableComponent = ({ receptions, setReceptions }) => {
                   />
                 </TableCell>
               </TableRow>
-            ))}
+            ))} 
           </TableBody>
         </Table>
       </TableContainer>

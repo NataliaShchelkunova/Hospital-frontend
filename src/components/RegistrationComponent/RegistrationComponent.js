@@ -9,13 +9,14 @@ import "./RegistrationComponent.scss";
 const RegistrationFormComponent = () => {
   const history = useHistory();
   const regExLogin = /(\w+).{6}/;
-  const regExPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{1,}$/;
+  const regExPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{1,}.{6}$/;
   const [open, setOpen] = useState({ stateSnackbar: false, message: "" });
   const { stateSnackbar, message } = open;
 
-  const checkPass = "Check password";
-  const checkLogin = "Check login";
-  const checkPasswords = "Check passwords";
+  const checkPass = "password must be at least 8 characters and 1 digit";
+  const checkLogin =
+    "login must be at least 6 characters";
+  const checkPasswords = "Check passwords. Passwords mismatch";
 
   const booleanLoginFunction = () => {
     setOpen({
@@ -59,6 +60,8 @@ const RegistrationFormComponent = () => {
     const formLogin = formData.get("login").trim();
     const formPassword = formData.get("password");
     const formPasswordRepeat = formData.get("passwordRepeat");
+    console.log(formLogin, formPassword);
+
     if (regExLogin.test(formLogin)) {
       if (regExPassword.test(formPassword)) {
         if (formPassword === formPasswordRepeat) {
@@ -85,7 +88,6 @@ const RegistrationFormComponent = () => {
       booleanLoginFunction();
     }
   };
-
   return (
     <div>
       <header>
@@ -108,7 +110,7 @@ const RegistrationFormComponent = () => {
                 <label>Repeat Password:</label>
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="password"
                   name="passwordRepeat"
                 />
                 <div className="button-and-text-conainer">

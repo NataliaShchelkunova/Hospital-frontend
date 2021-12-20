@@ -28,7 +28,7 @@ const DeleteComponent = ({
   const validateForToken = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      history.push("/registration");
+      history.push("/autorisation");
     }
   };
 

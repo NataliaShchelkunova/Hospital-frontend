@@ -20,22 +20,28 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
   const history = useHistory();
   const { _id, namePatient, doctorName, newDate, complaints } = oneTask;
 
+  const converDate = (date) => {
+    const temp = date.split(".");
+    [temp[0], temp[1]] = [temp[1], temp[0]];
+    return temp.join("-");
+  };
+
   const [data, setData] = useState({
     newNameReceptions: namePatient,
     newDoctorReceptions: doctorName,
-    newDateReceptions: newDate,
+    newDateReceptions: converDate(newDate),
     newComplaintReceptions: complaints,
   });
 
   const doctorNames = [
     {
-      value: "Ricova Irina Ivanovna",
+      value: "Бейдин Артем",
     },
     {
-      value: "Ten Alexandr Dmitrievich",
+      value: "Ракитина Екатерина",
     },
     {
-      value: "Shunko Eva Andrevna",
+      value: "Марченко Андрей",
     },
   ];
 
@@ -83,7 +89,7 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
   const validateForToken = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      history.push("/registration");
+      history.push("/autorisation");
     }
   };
 
@@ -105,7 +111,7 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
               variant="h6"
               component="h2"
             >
-              Измененть приём
+              Изменить приём
             </Typography>
           </div>
 
@@ -165,6 +171,8 @@ const EditComponent = ({ oneTask, closeModalWindows, setReceptions }) => {
                     <DesktopDatePicker
                       className="date-input"
                       inputFormat={"dd/MM/yyyy"}
+                      minDate={new Date("01-01-2021")}
+                      maxDate={new Date("12-31-2022")}
                       name="newDateReceptions"
                       value={newDateReceptions}
                       onChange={(e) => handleChange("newDateReceptions", e)}

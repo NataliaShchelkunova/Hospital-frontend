@@ -19,9 +19,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 36%;
+    width: 43%;
     margin: 0 1%;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .input-space {
@@ -31,17 +31,19 @@
 }
 
 @media (max-width: 768px) {
+  .sort-style
   .sort-component,
   .sort-component-type {
-    width: 40%;
+    width: 53%;
   }
 }
 
-@media (max-width: 414px) {
+@media (max-width: 425px) {
   .sort-style {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 98%;
 
     .sort-component,
     .sort-component-type {

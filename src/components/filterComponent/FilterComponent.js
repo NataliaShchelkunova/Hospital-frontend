@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import moment from "moment";
+import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import "./filterComponent.scss";
 
-const FilterComponent = ({ receptions, setReceptions, setOpenFilter }) => {
+const FilterComponent = ({ dataFilter, setReceptions, setOpenFilter }) => {
   const [dateForFilter, setDateForFilter] = useState({
     firstDateForStart: "",
     secondDateForEnd: "",
@@ -23,15 +21,7 @@ const FilterComponent = ({ receptions, setReceptions, setOpenFilter }) => {
   };
 
   const oriiginalOrderReseption = () => {
-    axios
-      .get("http://localhost:9000/getAllReception", {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      })
-      .then((res) => {
-        setReceptions(res.data.data);
-      });
+    setReceptions([...dataFilter]);
   };
 
   const filterApointments = () => {
@@ -39,11 +29,13 @@ const FilterComponent = ({ receptions, setReceptions, setOpenFilter }) => {
       ? new Date(firstDateForStart.split("-"))
       : "";
     const end = secondDateForEnd ? new Date(secondDateForEnd.split("-")) : "";
-    if (!start && !end) return setReceptions([...receptions]);
-    receptions = receptions.filter((item) => {
+    if (!start && !end) return setReceptions([...dataFilter]);
+
+    dataFilter = dataFilter.filter((item) => {
       const temp = item.newDate.split(".");
       [temp[0], temp[1]] = [temp[1], temp[0]];
       const elem = new Date(temp.join("-"));
+
       if (start && !end) return elem.getTime() >= start.getTime();
       else if (!start && end) return elem.getTime() <= end.getTime();
       else
@@ -51,7 +43,7 @@ const FilterComponent = ({ receptions, setReceptions, setOpenFilter }) => {
           elem.getTime() >= start.getTime() && elem.getTime() <= end.getTime()
         );
     });
-    return setReceptions([...receptions]);
+    return setReceptions([...dataFilter]);
   };
 
   return (

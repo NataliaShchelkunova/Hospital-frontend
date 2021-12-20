@@ -1,11 +1,27 @@
 .all-reception-container {
   width: 96%;
+  height: auto;
+  max-height: 54vh;
   margin: auto;
-  overflow: auto;
-  max-height: 100%;
+
+  .table-head-div {
+    width: 100%;
+  }
 
   .table-head {
     background-color: #c4c4c4;
+    position: sticky;
+    top: 0;
+  }
+
+  .table-container {
+    max-height: 54vh;
+    height: auto;
+  }
+
+  .body-table {
+    overflow: auto;
+    max-height: 52vh;
   }
 
   .table-row {
@@ -15,6 +31,22 @@
 
   .edit-table {
     border-left: none;
+    border-bottom: none;
+  }
+
+  .complaints-row,
+  .name-patient-row {
+    border-right: 1px solid black;
+    max-width: 10vw;
+    text-overflow: ellipsis;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  .complaints-row:hover,
+  .name-patient-row:hover {
+    text-overflow: unset;
+    word-wrap: break-word;
   }
 }
 
@@ -33,5 +65,17 @@
 
   .image-for-table {
     width: 30px;
+  }
+}
+
+@media (max-width: 770px) {
+  .table-head tr th {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 770px) {
+  .all-reception-container .name-patient-row {
+    max-width: 35vw;
   }
 }
